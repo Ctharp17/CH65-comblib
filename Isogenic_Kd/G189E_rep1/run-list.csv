@@ -1,0 +1,5 @@
+directory,row,shortname,mutant,antigen,replicate,prefix
+20211015_test8_fitc,A,germ,a,MA_189,1,
+20211015_test8_fitc,C,germ,a,MA_193,1,
+20211015_test8_fitc,F,som16,c,MA_189,1,
+20211015_test8_fitc,H,som16,c,MA_193,1,

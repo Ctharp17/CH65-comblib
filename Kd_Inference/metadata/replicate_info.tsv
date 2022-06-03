@@ -1,0 +1,7 @@
+replicate	solute	sequencing_data_subdir	cytometry_data_subdir	collection_date	construct
+a	MA90	Nova1/211202_A00794_0530_AHNN27DRXY_revcompi5_1mismatch/fastq/ch65a_pool	ch65a_gate_events/	10/27/2021	CH65
+b	MA90	Nova2/220415_A00794_0594_AHLGM3DRXY_1mismatch/fastq/CH65_Nova2	ch65b_gate_events/	2/16/2022	CH65
+d	SI06	NovaMerged	ch65d_gate_events/	1/6/2022	CH65
+e	SI06	NovaMerged	ch65e_gate_events/	2/9/2022	CH65
+g	G189E	NovaMerged	ch65g_gate_events/	3/25/2022	CH65
+h	G189E	NovaMerged	ch65h_gate_events/	3/30/2022	CH65

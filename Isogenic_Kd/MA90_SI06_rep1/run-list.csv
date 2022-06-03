@@ -1,0 +1,11 @@
+directory,row,shortname,mutant,antigen,replicate,prefix
+20210722_test1_fitc_csv/MA90,A,germ,a,MA,1,
+20210722_test1_fitc_csv/SI06,A,germ,a,SI,1,
+20210722_test1_fitc_csv/MA90,C,som18,b,MA,1,
+20210722_test1_fitc_csv/SI06,C,som18,b,SI,1,
+20210722_test1_fitc_csv/MA90,E,som16,c,MA,1,
+20210722_test1_fitc_csv/SI06,E,som16,c,SI,1,
+20210722_test1_fitc_csv/MA90,G,germ_dm,d,MA,1,
+20210722_test1_fitc_csv/SI06,G,germ_dm,d,SI,1,
+20210722_test1_fitc_csv/MA90,H,ch67,e,MA,1,
+20210722_test1_fitc_csv/SI06,H,ch67,e,SI,1,

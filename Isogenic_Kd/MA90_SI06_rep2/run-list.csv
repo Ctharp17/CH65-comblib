@@ -1,0 +1,7 @@
+directory,row,shortname,mutant,antigen,replicate,prefix
+20210724_test2_fitc_csv,A,germ,a,MA,2,
+20210724_test2_fitc_csv,B,germ,a,SI,2,
+20210724_test2_fitc_csv,C,som18,b,MA,2,
+20210724_test2_fitc_csv,D,som18,b,SI,2,
+20210724_test2_fitc_csv,E,som16,c,MA,2,
+20210724_test2_fitc_csv,F,som16,c,SI,2,
