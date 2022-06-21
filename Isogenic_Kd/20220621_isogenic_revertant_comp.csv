@@ -1,0 +1,5 @@
+﻿shortname,isogenic_rep1,isogenic_rep2,KD,KD_err
+reverted_MA90,10.01,10.11,10.06,0.05
+somatic_MA90,9.96,10.1,10.03,0.07
+reverted_SI06,9.21,9.42,9.315,0.105
+somatic_SI06,9.18,9.45,9.315,0.135
