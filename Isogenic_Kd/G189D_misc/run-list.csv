@@ -1,0 +1,13 @@
+directory,row,shortname,mutant,antigen,replicate,prefix
+20220623_rep1,A,germ,a,G189D,1,
+20220623_rep1,B,som16,b,G189D,1,
+20220623_rep1,D,Y35N_N52H,d,SI,1,
+20220623_rep1,E,i2_wothers,e,SI,1,
+20220623_rep1,F,highlymut,f,SI,1,
+20220623_rep1,H,i2,h,MA,1,
+20220623_rep2,A,germ,a,G189D,2,
+20220623_rep2,B,som16,b,G189D,2,
+20220623_rep2,D,Y35N_N52H,d,SI,2,
+20220623_rep2,E,i2_wothers,e,SI,2,
+20220623_rep2,F,highlymut,f,SI,2,
+20220623_rep2,H,i2,h,MA,2,
