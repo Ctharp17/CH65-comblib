@@ -53,18 +53,19 @@ order_start_indices_SI06.insert(0,1)
 full_mut_names = ['N26D','S29R','Y35N','Y48C','D49Y','V98I','G31D','Y33H','M34I','H35N','N52H','G57D','L83V','S84N','R85G','R87K']
 
 ep_type = 'biochem'
-antigen = 'G189E'
+ep_type_long = 'biochemical'
+antigen = 'SI06'
 
 
 
-if antigen == 'MA90': 
+if antigen == 'SI06':
     coefs = np.zeros(total_params_MA90+1)
     names = []
     sig = np.full((total_params_MA90+1),0)
     stderr = np.zeros(total_params_MA90+1)
     cis = np.zeros((total_params_MA90+1,2))
     
-    with open('CH65_MA90_newdata_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
+    with open('../../Epistasis_Inference/MA90/'+ep_type_long+'/CH65_MA90_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
         coef_reader = csv.reader(readfile,delimiter='\t')
         num_params = int(next(coef_reader)[-1])
         r2_train = float(next(coef_reader)[-1])
@@ -90,7 +91,7 @@ if antigen == 'SI06':
     stderr = np.zeros(total_params_SI06+1)
     cis = np.zeros((total_params_SI06+1,2))
     
-    with open('CH65_SI06_newdata_'+str(order_SI06)+'order_'+ep_type+'.txt','r') as readfile:
+    with open('../../Epistasis_Inference/SI06/'+ep_type_long+'/CH65_SI06_newdata_'+str(order_SI06)+'order_'+ep_type+'.txt','r') as readfile:
         coef_reader = csv.reader(readfile,delimiter='\t')
         num_params = int(next(coef_reader)[-1])
         r2_train = float(next(coef_reader)[-1])
@@ -117,7 +118,7 @@ if antigen == 'G189E':
     stderr = np.zeros(total_params_G189E+1)
     cis = np.zeros((total_params_G189E+1,2))
     
-    with open('CH65_G189E_newdata_'+str(order_G189E)+'order_'+ep_type+'.txt','r') as readfile:
+    with open('../../Epistasis_Inference/G189E/'+ep_type_long+'/CH65_G189E_newdata_'+str(order_G189E)+'order_'+ep_type+'.txt','r') as readfile:
         coef_reader = csv.reader(readfile,delimiter='\t')
         num_params = int(next(coef_reader)[-1])
         r2_train = float(next(coef_reader)[-1])
@@ -228,7 +229,7 @@ ax.tick_params(pad=2)
 
 
 plt.tight_layout()
-plt.savefig('CH65_MA90_biochem_2_sum.eps')
+plt.savefig('CH65_'+antigen+'_'+ep_type+'_2_sum.eps')
 plt.show()
 
 
@@ -241,7 +242,7 @@ plt.tick_params(length=0,pad=2)
 plt.xticks(color='w')
 plt.tight_layout()
 plt.yticks(size=5.5)
-plt.savefig('CH65_MA90_biochem_1.eps')
+plt.savefig('CH65_'+antigen+'_'+ep_type+'_1.eps')
 plt.show()
 
 
@@ -254,5 +255,5 @@ plt.tick_params(length=0,pad=2)
 plt.tight_layout()
 plt.xticks(color='w')
 plt.yticks(size=5.5)
-plt.savefig('CH65_MA90_biochem_higher.eps')
+plt.savefig('CH65_'+antigen+'_'+ep_type+'_higher.eps')
 plt.show()
