@@ -1,0 +1,5 @@
+﻿shortname,antigen,sortseq,sortseq_err,isogenicKd_rep1,isogenicKd_rep2,isogenicKd_avg,isogenicKd_sem,isogenicPE_rep1,isogenicPE_rep2,isogenicPE_avg,isogenicPE_sem,isogenic_enrich_rep1,isogenic_enrich_rep2,isogenic_enrich_avg,isogenic_enrich_sem
+germline,SI06-G189D,8.117102905,6.084815789,6,6,6,0,53.33,47.16,50.245,3.085,1.97,3.27,2.62,0.65
+somatic,SI06-G189D,97.3824605,1.21005813,6,6,6,0,564.66,589.88,577.27,12.61,75.5,91,83.25,7.75
+germline,MI15,38.91666278,9.336804488,6,6,6,0,265.07,288.3,276.685,11.615,24.8,29.6,27.2,2.4
+somatic,MI15,56.55139779,12.70229293,6,6,6,0,6032.54,6695.34,6363.94,331.4,99.9,99.8,99.85,0.05
