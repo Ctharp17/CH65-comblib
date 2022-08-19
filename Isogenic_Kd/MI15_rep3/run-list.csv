@@ -1,0 +1,9 @@
+directory,row,shortname,mutant,antigen,replicate,prefix
+20220819_test12_csv,A,germ,a,MI,1,
+20220819_test12_csv,B,germ,a,MI,2,
+20220819_test12_csv,C,som16,b,MI,1,
+20220819_test12_csv,D,som16,b,MI,2,
+20220819_test12_csv,E,mut1,c,MI,1,
+20220819_test12_csv,F,mut1,c,MI,2,
+20220819_test12_csv,G,mut2,d,MI,1,
+20220819_test12_csv,H,mut2,d,MI,2,
