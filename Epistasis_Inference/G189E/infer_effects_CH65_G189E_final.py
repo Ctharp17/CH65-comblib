@@ -5,8 +5,8 @@ from sklearn.preprocessing import PolynomialFeatures
 import statsmodels.api as sm
 
 # choose statistical or biochemical epistasis
-ep_type = 'biochem' 
-# ep_type = 'stat'
+# ep_type = 'biochem' 
+ep_type = 'stat'
 
 
 # read in rsq data from CV folds        
