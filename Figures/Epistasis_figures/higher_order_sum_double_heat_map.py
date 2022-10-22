@@ -36,7 +36,7 @@ order_start_indices_G189E = list(np.cumsum(num_term_list_G189E)+1)
 order_start_indices_G189E.insert(0,1)
 
 num_mutations_MA90 = 16
-order_MA90 = 5
+order_MA90 = 4
 num_term_list_MA90 = np.array([int(comb(num_mutations_MA90,i)) for i in range(1,order_MA90+1)])
 total_params_MA90 = sum(num_term_list_MA90)
 order_start_indices_MA90 = list(np.cumsum(num_term_list_MA90)+1)
@@ -60,7 +60,7 @@ sig_G189E = np.full((total_params_G189E+1),0)
 stderr_G189E = np.zeros(total_params_G189E+1)
 cis_G189E = np.zeros((total_params_G189E+1,2))
 
-with open('CH65_G189E_newdata_'+str(order_G189E)+'order_'+ep_type+'.txt','r') as readfile:
+with open('../../Epistasis_Inference/G189E/CH65_G189E_102022_'+str(order_G189E)+'order_'+ep_type+'.txt','r') as readfile:
     coef_reader = csv.reader(readfile,delimiter='\t')
     num_params = int(next(coef_reader)[-1])
     r2_train = float(next(coef_reader)[-1])
@@ -87,7 +87,7 @@ sig_MA90 = np.full((total_params_MA90+1),0)
 stderr_MA90 = np.zeros(total_params_MA90+1)
 cis_MA90 = np.zeros((total_params_MA90+1,2))
 
-with open('CH65_MA90_newdata_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
+with open('../../Epistasis_Inference/MA90/CH65_MA90_102022_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
     coef_reader = csv.reader(readfile,delimiter='\t')
     num_params = int(next(coef_reader)[-1])
     r2_train = float(next(coef_reader)[-1])
@@ -114,7 +114,7 @@ sig_SI06 = np.full((total_params_SI06+1),0)
 stderr_SI06 = np.zeros(total_params_SI06+1)
 cis_SI06 = np.zeros((total_params_SI06+1,2))
 
-with open('CH65_SI06_newdata_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
+with open('../../Epistasis_Inference/SI06/CH65_SI06_102022_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
     coef_reader = csv.reader(readfile,delimiter='\t')
     num_params = int(next(coef_reader)[-1])
     r2_train = float(next(coef_reader)[-1])

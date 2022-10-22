@@ -36,7 +36,7 @@ order_start_indices_G189E = list(np.cumsum(num_term_list_G189E)+1)
 order_start_indices_G189E.insert(0,1)
 
 num_mutations_MA90 = 16
-order_MA90 = 5
+order_MA90 = 4
 num_term_list_MA90 = np.array([int(comb(num_mutations_MA90,i)) for i in range(1,order_MA90+1)])
 total_params_MA90 = sum(num_term_list_MA90)
 order_start_indices_MA90 = list(np.cumsum(num_term_list_MA90)+1)
@@ -54,18 +54,18 @@ full_mut_names = ['N26D','S29R','Y35N','Y48C','D49Y','V98I','G31D','Y33H','M34I'
 
 ep_type = 'biochem'
 ep_type_long = 'biochemical'
-antigen = 'SI06'
+antigen = 'G189E'
 
 
 
-if antigen == 'SI06':
+if antigen == 'MA90':
     coefs = np.zeros(total_params_MA90+1)
     names = []
     sig = np.full((total_params_MA90+1),0)
     stderr = np.zeros(total_params_MA90+1)
     cis = np.zeros((total_params_MA90+1,2))
     
-    with open('../../Epistasis_Inference/MA90/'+ep_type_long+'/CH65_MA90_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
+    with open('../../Epistasis_Inference/MA90/'+ep_type_long+'/CH65_MA90_102022_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
         coef_reader = csv.reader(readfile,delimiter='\t')
         num_params = int(next(coef_reader)[-1])
         r2_train = float(next(coef_reader)[-1])
@@ -91,7 +91,7 @@ if antigen == 'SI06':
     stderr = np.zeros(total_params_SI06+1)
     cis = np.zeros((total_params_SI06+1,2))
     
-    with open('../../Epistasis_Inference/SI06/'+ep_type_long+'/CH65_SI06_newdata_'+str(order_SI06)+'order_'+ep_type+'.txt','r') as readfile:
+    with open('../../Epistasis_Inference/SI06/'+ep_type_long+'/CH65_SI06_102022_'+str(order_SI06)+'order_'+ep_type+'.txt','r') as readfile:
         coef_reader = csv.reader(readfile,delimiter='\t')
         num_params = int(next(coef_reader)[-1])
         r2_train = float(next(coef_reader)[-1])
@@ -118,7 +118,7 @@ if antigen == 'G189E':
     stderr = np.zeros(total_params_G189E+1)
     cis = np.zeros((total_params_G189E+1,2))
     
-    with open('../../Epistasis_Inference/G189E/'+ep_type_long+'/CH65_G189E_newdata_'+str(order_G189E)+'order_'+ep_type+'.txt','r') as readfile:
+    with open('../../Epistasis_Inference/G189E/'+ep_type_long+'/CH65_G189E_102022_'+str(order_G189E)+'order_'+ep_type+'.txt','r') as readfile:
         coef_reader = csv.reader(readfile,delimiter='\t')
         num_params = int(next(coef_reader)[-1])
         r2_train = float(next(coef_reader)[-1])
