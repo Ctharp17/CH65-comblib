@@ -60,7 +60,7 @@ sig_G189E = np.full((total_params_G189E+1),0)
 stderr_G189E = np.zeros(total_params_G189E+1)
 cis_G189E = np.zeros((total_params_G189E+1,2))
 
-with open('../../Epistasis_Inference/G189E/CH65_G189E_102022_'+str(order_G189E)+'order_'+ep_type+'.txt','r') as readfile:
+with open('CH65_G189E_102022_'+str(order_G189E)+'order_'+ep_type+'.txt','r') as readfile:
     coef_reader = csv.reader(readfile,delimiter='\t')
     num_params = int(next(coef_reader)[-1])
     r2_train = float(next(coef_reader)[-1])
@@ -87,7 +87,7 @@ sig_MA90 = np.full((total_params_MA90+1),0)
 stderr_MA90 = np.zeros(total_params_MA90+1)
 cis_MA90 = np.zeros((total_params_MA90+1,2))
 
-with open('../../Epistasis_Inference/MA90/CH65_MA90_102022_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
+with open('CH65_MA90_102022_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
     coef_reader = csv.reader(readfile,delimiter='\t')
     num_params = int(next(coef_reader)[-1])
     r2_train = float(next(coef_reader)[-1])
@@ -114,7 +114,7 @@ sig_SI06 = np.full((total_params_SI06+1),0)
 stderr_SI06 = np.zeros(total_params_SI06+1)
 cis_SI06 = np.zeros((total_params_SI06+1,2))
 
-with open('../../Epistasis_Inference/SI06/CH65_SI06_102022_'+str(order_MA90)+'order_'+ep_type+'.txt','r') as readfile:
+with open('CH65_SI06_102022_'+str(order_SI06)+'order_'+ep_type+'.txt','r') as readfile:
     coef_reader = csv.reader(readfile,delimiter='\t')
     num_params = int(next(coef_reader)[-1])
     r2_train = float(next(coef_reader)[-1])
@@ -152,6 +152,10 @@ for i in range(16):
 for i in range(1,len(coefs_G189E)):
 
     muts_involved = [int(x)-1 for x in names_G189E[i].split(',')]
+    if len(muts_involved) == 1:
+        if sig_G189E[i]:
+            for j in range(len(muts_involved)):
+                epistasis_first_G189E[muts_involved[j]] = coefs_G189E[i]  
     
     # only consider 3rd order and higher
     if len(muts_involved) >= 2:
@@ -168,6 +172,11 @@ for i in range(1,len(coefs_SI06)):
 
     muts_involved = [int(x)-1 for x in names_SI06[i].split(',')]
     
+    if len(muts_involved) == 1:
+        if sig_SI06[i]:
+            for j in range(len(muts_involved)):
+                epistasis_first_SI06[muts_involved[j]] = coefs_SI06[i]  
+        
     # only consider 3rd order and higher
     if len(muts_involved) >= 2:
         # only consider significant terms
@@ -180,6 +189,10 @@ for i in range(1,len(coefs_SI06)):
 for i in range(1,len(coefs_MA90)):
 
     muts_involved = [int(x)-1 for x in names_MA90[i].split(',')]
+    if len(muts_involved) == 1:
+        if sig_MA90[i]:
+            for j in range(len(muts_involved)):
+                epistasis_first_MA90[muts_involved[j]] = coefs_MA90[i]  
     
     # only consider 3rd order and higher
     if len(muts_involved) >= 2:
@@ -188,15 +201,10 @@ for i in range(1,len(coefs_MA90)):
             for j in range(len(muts_involved)):
                 epistasis_sum_MA90[muts_involved[j]] += coefs_MA90[i]   
 
-for i in range(len(epistasis_first_MA90)):
-    epistasis_first_MA90[i] = coefs_MA90[i+1]
-    epistasis_first_G189E[i] = coefs_G189E[i+1]
+# for i in range(len(epistasis_first_MA90)):
+#     epistasis_first_MA90[i] = coefs_MA90[i+1]
+#     epistasis_first_G189E[i] = coefs_G189E[i+1]
 
-for i in range(10):
-    epistasis_first_SI06[i] = coefs_SI06[i+1]
-
-for i in range(11,16):
-    epistasis_first_SI06[i] = coefs_SI06[i+1]
 
 epistasis_first_SI06[10] = 3
 epistasis_sum_SI06[10] = 3
@@ -221,8 +229,8 @@ triangles1 = [(i + j*(M+1), i+1 + j*(M+1), i + (j+1)*(M+1)) for j in range(N) fo
 triangles2 = [(i+1 + j*(M+1), i+1 + (j+1)*(M+1), i + (j+1)*(M+1)) for j in range(N) for i in range(M)]
 triang1 = Triangulation(xs.ravel(), ys.ravel(), triangles1)
 triang2 = Triangulation(xs.ravel(), ys.ravel(), triangles2)
-img1 = plt.tripcolor(triang1, ep_higher_order.ravel(), cmap='bwr', vmin=-2.5,vmax=2.5,linewidths=0)
-img2 = plt.tripcolor(triang2, ep_first_order.ravel(), cmap='bwr', vmin=-2.5,vmax=2.5,linewidths=0)
+img1 = plt.tripcolor(triang1, ep_higher_order.ravel(), cmap='bwr', vmin=-3.5,vmax=3.5,linewidths=0)
+img2 = plt.tripcolor(triang2, ep_first_order.ravel(), cmap='bwr', vmin=-3.5,vmax=3.5,linewidths=0)
 
 
 ax.text(0, 16.4, 'MA90', size=6, color='black',fontweight='bold')
