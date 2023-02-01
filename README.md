@@ -20,3 +20,5 @@ data and Kd inference from isogenic flow cytometry measurements
 
 ## Figures: 
 code for generating all figures in manuscript, and output images
+
+#Paper available at: https://doi.org/10.7554/eLife.83628
