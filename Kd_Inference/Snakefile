@@ -89,20 +89,14 @@ rule all:
                 construct=sample_table.construct.unique(),
                 solute=sample_table.solute.unique())
 
-rule validate_mutations:
-    output: mutation_list=result + '/mutation_list.tsv'
-    conda: 'environment.yaml'
-    script: 'scripts/validate_mutations.py'
-
 rule generate_regexes:
-    input : mutation_list=result + '/mutation_list.tsv'
     output:
         read_1_regex=result + '/regexes/read_1_regex.txt',
         read_2_regex=result + '/regexes/read_2_regex.txt',
         geno_for_regex=result + '/regexes/geno_for_regex.txt',
         geno_rev_regex=result + '/regexes/geno_rev_regex.txt'
     conda: 'environment.yaml'
-    script: 'scripts/generate_regex.py'
+    script: 'scripts/generate_regex_ct.py'
 
 rule concat_lanes:
     input: lanes_fastq_filename
@@ -119,7 +113,7 @@ rule parse_fastqs:
         tsv=result + '/parsed_fastq/{sample}.tsv',
         stats=result + '/parsed_fastq/{sample}_stats.tsv'
     conda: 'environment.yaml'
-    script: 'scripts/parse_fastqs.py'
+    script: 'scripts/parse_fastqs_CT.py'
 
 rule collate_fastq_stats:
     input: stats=expand(rules.parse_fastqs.output.stats, sample=samples)
@@ -136,7 +130,7 @@ rule parse_indices:
         tsv=result + '/indexed_fastq/{sample}.tsv',
         stats=result + '/indexed_fastq/{sample}_stats.tsv'
     conda: 'environment.yaml'
-    script: 'scripts/parse_indices.py'
+    script: 'scripts/parse_indices_ct.py'
 
 rule collate_index_stats:
     input: stats=expand(rules.parse_indices.output.stats, sample=samples)
@@ -146,15 +140,13 @@ rule collate_index_stats:
 rule parse_genotype:
     input:
         tsv=rules.parse_indices.output.tsv,
-        geno_for_regex=result + '/regexes/geno_for_regex.txt',
-        geno_rev_regex=result + '/regexes/geno_rev_regex.txt',
-        mutation_list=result + '/mutation_list.tsv'
+        geno_for_regex=result + '/regexes/geno_for_regex.txt'
     output:
         tsv=result + '/genotypes/{sample}.tsv',
         bad_reads=result + '/genotypes/{sample}_rejected_reads.tsv.gz',
         stats=result + '/genotypes/{sample}_stats.tsv'
     conda: 'environment.yaml'
-    script: 'scripts/parse_genotype.py'
+    script: 'scripts/parse_genotype_ct.py'
 
 rule collate_geno_stats:
     input: stats=expand(rules.parse_genotype.output.stats, sample=samples)
@@ -167,7 +159,7 @@ rule deduplicate_UMIs_and_count:
         tsv=result + '/counts/{sample}.tsv',
         stats=result + '/counts/{sample}_stats.tsv'
     conda: 'environment.yaml'
-    script: 'scripts/count_UMIs.py'
+    script: 'scripts/count_UMIs_ct.py'
 
 rule collate_count_stats:
     input: stats=expand(rules.deduplicate_UMIs_and_count.output.stats, sample=samples)

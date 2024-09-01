@@ -1,61 +1,24 @@
 # CONFIG FILE
 
 # Name of the experiment (a name for the results folder)
-experiment_name: CH65
+experiment_name: Omi-32
 
 # Directory where sequencing data is stored (see README for details)
 sequencing_data_dir: /n/desai_lab/users/aphillips/babyYODA/titeseq/full_titeseq_data/seq_data/
 cytometry_data_dir: /n/desai_lab/users/aphillips/babyYODA/titeseq/full_titeseq_data/flow_data/
 
 # Metadata files (see README for details)
-sample_table_filename: metadata/sample_info.tsv
-replicate_table_filename: metadata/replicate_info.tsv
-
-# --------------------------
-# Sequence info
-# --------------------------
-
-# Provide the ancestral '0' sequence and the evolved '1' sequence, in this case
-# the UCA860 and CH65. This is not the amplicon, but rather
-# just the sequence of the antibody construct (VL-GS-VH). The amino acid numbering starts at the
-# specified residue number below.
-sequence_begins_with_residue: 1
-ancestral_seq: |
-    CAGTCAGTGCTGACTCAACCACCATCCGTGAGTGTTGCCCCTGGCCAGACGGCTAGAATTACCTGCGGCGGTAACAACATTGGAAGTAAAAGTGTGCACTGGTACCAGCAGAAGCCAGGCCAGGCCCCTGTGCTGGTCGTCTATGATGATAGCGACCGGCCCTCAGGCATACCTGAGCGATTCTCTGGCTCCAACTCTGGGAACACGGCCACCCTGACCATCAGCAGGGTCGAAGCCGGGGATGAGGCCGACTATTACTGTCAGGTGTGGGATAGTAGTAGTGATCATGTGGTATTCGGCGGAGGGACCAAGCTGACCGTCCTAGGTGGTGGAGGCGGATCAGGCGGTGGAGGTTCTGGCGGAGGAGGTAGTCAGGTGCAGCTGGTGCAGTCTGGGGCTGAGGTGAAGAAGCCTGGGGCCTCAGTGAAGGTCAGCTGCAAGGCTTCTGGATACACCTTCACCGGCTACTATATGCACTGGGTGCGACAGGCCCCTGGACAAGGGCTTGAGTGGATGGGATGGATCAACCCTAACAGTGGTGGCACAAACTATGCACAGAAGTTTCAGGGCTGGGTCACCATGACCAGGGACACGTCCATCAGCACAGCCTACATGGAGCTGAGCAGGCTGAGATCTGACGACACGGCCGTGTATTACTGTGCCCGTGGAGGCCTGGAACCACGTAGTGTTGATTACTACTACTATGGCATGGATGTTTGGGGTCAAGGAACAACAGTTACCGTTTCTTCA
-descendant_seq: |
-    CAGTCAGTGCTGACTCAACCACCATCCGTGAGTGTTGCCCCTGGCCAGACGGCTAGAATTACCTGCGGCGGTAACgatATTGGAcggAAAAGTGTGCACTGGaatCAGCAGAAGCCAGGCCAGGCCCCTGTGCTGGTCGTCtgctacGATAGCGACagaCCCTCAGGCATACCTGAGCGATTCTCTGGCTCCAACTCTGGGAACACGGCCACCCTGACCATCAGCAGGGTCGAAGCCGGGGATGAGGCCGACTATTACTGTCAGGTGTGGGATAGTAGTAGTGATCATGTGatcTTCGGCGGAGGGACCAAGCTGACCGTCCTAGGTGGTGGAGGCGGATCAGGCGGTGGAGGTTCTGGCGGAGGAGGTAGTCAGGTGCAGCTGGTGCAGTCTGGGGCTGAGGTGAAGAAGCCTGGGGCCTCAGTGAAGGTCAGCTGCAAGGCTTCTGGATACACCTTCACCgatTACcacatcaatTGGGTGCGACAGGCCCCTGGACAAGGGCTTGAGTGGATGGGATGGATCcatCCTAACAGTGGTgatACAAACTATGCACAGAAGTTTCAGGGCTGGGTCACCATGACCAGGGACACGTCCATCAGCACAGCCTACATGGAGgtcaatggaCTGaagTCTGACGACACGGCCGTGTATTACTGTGCCCGTGGAGGCCTGGAACCACGTAGTGTTGATTACTACTACTATGGCATGGATGTTTGGGGTCAAGGAACAACAGTTACCGTTTCTTCA
-    
-# The pipeline automatically detects the mutations present in the gene sequences,
-# but for good measure, they are explicitly listed here. The scripts will throw
-# an error if this information is not consistent
-mutation_names: [ N26D, S29R, Y35N, Y48C, D49Y, V98I, G155D, Y157H, M158I, H159N, N176H, G181D, L207V, S208N, R209G, R211K ]
-num_mutations: 16
-
-# Some of the mutations are also `synomously encoded' at other residue positions
-# so that they lie in the illumina read part of the amplicon. In this case
-synonymously_coded_mutations:
-    - mutation_name: V98I
-      synonomous_position: 53
-      codon_0: CGG
-      codon_1: AGA
+sample_table_filename: metadata/sample_info_omi-32.tsv
+replicate_table_filename: metadata/replicate_info_omi-32.tsv
+variant_barcode_table: metadata/variants_barcodes_binary-genos.csv
       
 # --------------------------
-# Primers and NGS sequencing
+# Read constant regions and NGS sequencing
 # --------------------------
 
-num_mutations_on_forward_read: 6
-# The part of the forward primer which anneals to the plasmid
-foward_read_annealing_seq: CTGGCCAGACGGCTAG
-# Number of bp between 5' end of gene sequence and 5' end of the annealing primer sequence
-# Negative means amplicon starts before gene, positive means after
-forward_read_starting_offset: 40
+const_reg_1: CAGAAATTGATTTCCGAAGAAGACCTGTAGTAACTTAAGAATTC
 
-num_mutations_on_reverse_read: 10
-# The reverse complement of the part of the reverse primer which anneals to plasmid
-reverse_read_annealing_seq: CCTCCACGGGCACAG
-# Number of bp between 3' end of annealing sequence and the 3' end of gene sequence
-# Negative means amplicon ends after gene, positive means before
-reverse_read_starting_offset: 79
+const_reg_2: ACCGGTCTGACCTCCTTCTCCCTCTCTTCAGGTCTGCAGTCGACGGTACC
 
 umi_length: 8
 
@@ -66,8 +29,6 @@ row_inline_indices:
     - GCAAGCTGTT
     - TCGGTGGTACG
     - GTTCAACCGATT
-    - CGTACAA
-    - GAGATCAC
     
 col_inline_indices:
     - TTGATCG
@@ -77,9 +38,6 @@ col_inline_indices:
     - GGTATCA
     - GATGTCCT
     - CTCATCCAG
-    - GACGGAACTC
-    - ATCGCAGGCAT
-    - TCACGACTAGTA
 
 # --------------------------
 # Data processing
